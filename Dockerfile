@@ -6,6 +6,12 @@ RUN yum -y update
 # install some tools
 RUN yum install -y curl wget unzip git which
 
+# add postgresql.org repo
+RUN yum install -y https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm
+
+# install postgres client
+RUN yum -y install postgresql96
+
 # install apache
 RUN yum install -y httpd
 ADD ./httpd-drupal.conf /etc/httpd/conf.d/drupal.conf
